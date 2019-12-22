@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TouchEventLesson</string>
     <string name="reset">reset</string>
+    <string name="square_button_text">Квадрат</string>
+    <string name="pick_color">Pick color</string>
+    <string name="line">Линия</string>
+    <string name="path_line">Кривая линия</string>
+    <string name="multi_painter">Мультитач</string>
 </resources>
