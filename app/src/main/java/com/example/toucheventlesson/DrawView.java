@@ -6,9 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -36,8 +38,6 @@ public class DrawView extends View {
     private List<MultiPaintingView> mMultiPaintingViewList = new ArrayList<>();
     private MultiPaintingView mMultiPaintingView;
 
-
-
     public DrawView(Context context) {
         super(context, null);
     }
@@ -47,15 +47,13 @@ public class DrawView extends View {
         initPaint();
     }
 
-
-
     public DrawView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
 
     private void initPaint() {
-        defautColor();
+        defaultColor();
 //        mLinePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
 //        mLinePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
         mLinePaint.setColor(mCurrentColor);
@@ -80,6 +78,21 @@ public class DrawView extends View {
 
 
     }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+
+        int size = Math.min(w, h);
+        int left = (w - size) / 2;
+        int top = (h - size) / 2;
+
+        int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+
+        Rect mDrawingBounds = new Rect(left, top, left + size, top + size);
+        mDrawingBounds.inset(oneDp, oneDp);
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -261,11 +274,9 @@ public class DrawView extends View {
         invalidate();
     }
 
-    public void defautColor() {
+    public void defaultColor() {
         mCurrentColor = Color.RED;
     }
-
-
 
     public void changeColor(int color) {
         mCurrentColor = color;
@@ -290,8 +301,6 @@ public class DrawView extends View {
         drawMultiPainting(canvas);
 
     }
-
-
 
 
     private static class SavedState extends BaseSavedState {
