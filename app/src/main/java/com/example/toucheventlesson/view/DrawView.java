@@ -1,4 +1,4 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,6 +15,12 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import com.example.toucheventlesson.model.Box;
+import com.example.toucheventlesson.model.EnumFigure;
+import com.example.toucheventlesson.model.Figure;
+import com.example.toucheventlesson.model.Line;
+import com.example.toucheventlesson.model.PathLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -318,26 +324,20 @@ public class DrawView extends View {
         private SavedState(Parcel in) {
             super(in);
             color = in.readInt();
-            mLinesList = in.readParcelable((ClassLoader) Figure.CREATOR);
-            mPathLinesList = in.readParcelable((ClassLoader) Figure.CREATOR);
-            rectagleList = in.readParcelable((ClassLoader) Figure.CREATOR);
+            mLinesList = in.readParcelable(getClass().getClassLoader());
+            mPathLinesList = in.readParcelable(getClass().getClassLoader());
+            rectagleList = in.readParcelable((getClass().getClassLoader()));
             mMultiPaintingViews = in.createTypedArrayList(MultiPaintingView.CREATOR);
             figure = (EnumFigure) in.readSerializable();
-//            mPathLinesList = in.createTypedArrayList(PathLine.CREATOR)
         }
 
         @Override
         public void writeToParcel(Parcel out, int flags) {
             super.writeToParcel(out, flags);
             out.writeInt(color);
-            out.writeTypedList(mLinesList);
-            out.writeTypedList(mPathLinesList);
-            out.writeTypedList(rectagleList);
-            out.writeTypedList(mMultiPaintingViews);
             out.writeSerializable(figure);
-
-
         }
+
 
         public static final Parcelable.Creator<SavedState> CREATOR
                 = new Parcelable.Creator<SavedState>() {

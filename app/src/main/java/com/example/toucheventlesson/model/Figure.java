@@ -1,11 +1,10 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.model;
 
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.os.Parcel;
-import android.os.Parcelable;
 
-public abstract class Figure implements Parcelable {
+public abstract class Figure{
 
     private PointF mOrigin;
     private PointF mEnd;
@@ -49,28 +48,6 @@ public abstract class Figure implements Parcelable {
         return mPath;
     }
 
-
-    public static final Creator<Figure> CREATOR = new Creator<Figure>() {
-        @Override
-        public Figure createFromParcel(Parcel in) {
-            return new Figure(in) {
-                @Override
-                public int describeContents() {
-                    return 0;
-                }
-
-                @Override
-                public void writeToParcel(Parcel dest, int flags) {
-
-                }
-            };
-        }
-
-        @Override
-        public Figure[] newArray(int size) {
-            return new Figure[size];
-        }
-    };
 }
 
 

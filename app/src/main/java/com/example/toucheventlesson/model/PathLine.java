@@ -1,7 +1,6 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.model;
 
 import android.graphics.Path;
-import android.os.Parcel;
 
 public class PathLine extends Figure {
 
@@ -27,13 +26,5 @@ public class PathLine extends Figure {
         mColor = color;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

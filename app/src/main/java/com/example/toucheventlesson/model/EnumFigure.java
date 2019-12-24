@@ -1,4 +1,4 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.model;
 
 public enum EnumFigure {
         LINE,

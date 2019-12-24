@@ -1,4 +1,4 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.view;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

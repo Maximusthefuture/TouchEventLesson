@@ -6,6 +6,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.toucheventlesson.model.EnumFigure;
+import com.example.toucheventlesson.view.DrawView;
+
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,9 +35,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 //        drawView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        init();
 
+    }
+
+    private void init() {
         resetButton = findViewById(R.id.button_reset);
 
         drawView = findViewById(R.id.draw_view);

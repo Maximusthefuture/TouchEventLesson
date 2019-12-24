@@ -1,7 +1,6 @@
-package com.example.toucheventlesson;
+package com.example.toucheventlesson.model;
 
 import android.graphics.PointF;
-import android.os.Parcel;
 
 public class Box extends Figure{
 
@@ -36,13 +35,4 @@ public class Box extends Figure{
         mColor = color;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
